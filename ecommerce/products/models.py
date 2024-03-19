@@ -20,7 +20,7 @@ class Product(models.Model):
     category = models.CharField(max_length=30)
     public = models.BooleanField(default=True)
 
-class Media(models.Model):
+class ProductMedia(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     file = models.FileField(upload_to="product_media/")
     type = models.CharField(max_length=5, choices=MEDIA_TYPE_CHOICES, default='IMG')

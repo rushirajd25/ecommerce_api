@@ -1,14 +1,14 @@
 from rest_framework import serializers
 
-from .models import Product, Media, FeaturedProduct
+from .models import Product, ProductMedia, FeaturedProduct
 
-class MediaSerializer(serializers.ModelSerializer):
+class ProductMediaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Media
+        model = ProductMedia
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
-    media = MediaSerializer(source='media_set', many=True, read_only=True)
+    media = ProductMediaSerializer(source='productmedia_set', many=True, read_only=True)
 
     class Meta:
         model = Product
